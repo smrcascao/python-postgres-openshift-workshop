@@ -18,5 +18,4 @@ COPY . $APP_ROOT
 
 EXPOSE 5000
 
-
 CMD ["python","-t", "app.py"]
