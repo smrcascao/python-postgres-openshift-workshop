@@ -1,4 +1,3 @@
-
 kind: Namespace
 apiVersion: v1
 metadata:
@@ -131,9 +130,15 @@ spec:
               value: "workshopdb"
           ports:
             - containerPort: 5000
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 5000
+            initialDelaySeconds: 3
+            periodSeconds: 5
           readinessProbe:
             httpGet:
-              path: /
+              path: /healthz
               port: 5000
             periodSeconds: 10
             timeoutSeconds: 3
