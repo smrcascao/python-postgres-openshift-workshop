@@ -1,3 +1,23 @@
+# Dependences
+
+## Install SOPS
+
+[Howt to install SOPS](https://github.com/mozilla/sops)
+
+## Intall Helm 
+
+[How to install Helm 3](https://helm.sh/docs/intro/install/)
+
+## Intall helm-secrets Plugin
+
+[How to install helm-secrets](https://github.com/jkroepke/helm-secrets)
+
+## Intall helm-secrets 
+
+[How to install GPG](https://gnupg.org/download/)
+
+---
+
 ## To create a key (passphrase "secret") superteam@criticaltechworks.com
 ``` gpg --gen-key ```
 
@@ -10,7 +30,7 @@
 ## To import private key:
 ``` gpg --import private.key ```
 
-## list your public key with the following command:
+## List your public key with the following command:
 ``` gpg --fingerprint superteam@criticaltechworks.com ```
 
 output:
@@ -21,6 +41,7 @@ pub   rsa2048 2021-02-01 [SC]
 uid           [ultimate] super team (secrets) <superteam@criticaltechworks.com>
 sub   rsa2048 2021-02-01 [E]
 ```
+
 ## Export  env "**SOPS_PGP_FP**"
 ```export SOPS_PGP_FP="A9296F1FD1BCC6292FA01792FA059094E45E39AE" ```
 
