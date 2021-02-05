@@ -12,7 +12,7 @@
 
 [How to install helm-secrets](https://github.com/jkroepke/helm-secrets)
 
-## Intall helm-secrets 
+## Intall GPG
 
 [How to install GPG](https://gnupg.org/download/)
 
