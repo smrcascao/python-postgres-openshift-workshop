@@ -2,7 +2,7 @@
 
 ## Install SOPS
 
-[Howt to install SOPS](https://github.com/mozilla/sops)
+[How to install SOPS](https://github.com/mozilla/sops)
 
 ## Intall Helm 
 
@@ -12,7 +12,7 @@
 
 [How to install helm-secrets](https://github.com/jkroepke/helm-secrets)
 
-## Intall GPG
+## Install GPG
 
 [How to install GPG](https://gnupg.org/download/)
 
@@ -27,7 +27,7 @@
 ## To export a private key:
 ``` gpg --export-secret-key -a "superteam@criticaltechworks.com" > private.key```
 
-## To import private key:
+## To import the private key:
 ``` gpg --import private.key ```
 
 ## List your public key with the following command:
