@@ -1,0 +1,35 @@
+# Default values for demo-app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+namespace: demo-app
+configMap:
+  postgres: postgres-config
+
+secrets:
+  postgresName: postgres-credentials
+  postgresUser: cG9zdGdyZXM=
+  postgresPassword: bXlzZWNyZXRwYXNzd29yZA==
+
+postgres:
+  StatefulSetName: postgres
+  containerName: postgres
+  imageName: docker.io/library/postgres
+  tag: 10.15-alpine
+  DBName: workshopdb
+  containerPort: 5432
+  storageSize: 1Gi
+  storageClassName: ocs-storagecluster-ceph-rbd
+  serviceName: service-postgres
+
+backend:
+  deploymentName: flask-backend-deployment
+  replicas: 2
+  containerName: flask-app
+  imageName: smrcascao/workshop
+  tag: latest
+  containerPort: 5000
+  serviceName: service-flask-backend
+
+route:
+  enabled: true
+  name: service-flask-backend-route

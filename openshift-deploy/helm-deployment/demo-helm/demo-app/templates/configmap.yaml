@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: {{ .Values.configMap.postgres }}
+data:
+  PGDATA: /var/lib/postgresql/data/pgdata

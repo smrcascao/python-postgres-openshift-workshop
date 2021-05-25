@@ -1,0 +1,27 @@
+
+
+Thank you for installing {{ .Chart.Name }}.
+
+Your release is named {{ .Release.Name }}.
+
+To learn more about the release, try:
+
+  $ helm status {{ .Release.Name }}
+  $ helm get all {{ .Release.Name }}
+
+{{- if .Values.route.enabled }}
+  Your application is here: 
+  export ROUTE=$(oc get routes -n  {{ .Values.namespace }} | awk '{print $2}')
+  echo $ROUTE
+{{- end }}
+
+
+
+  _____     ____
+ /      \  |  o | 
+|        |/ ___\| 
+|_________/     
+|_|_| |_|_|
+
+
+Your application {{ include "demo-app.fullname" . }} was deployed!
