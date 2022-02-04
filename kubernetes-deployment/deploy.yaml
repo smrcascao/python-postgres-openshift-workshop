@@ -71,7 +71,7 @@ spec:
         name: postgredb
       spec:
         accessModes: ["ReadWriteOnce"]
-        storageClassName: standard-ext4-ssd-resizable
+        storageClassName: default
         resources:
           requests:
             storage: 1Gi
@@ -157,3 +157,25 @@ spec:
       targetPort: 5000
   selector:
     app: flask-app
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: demo-app
+  name: ingress-nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /app(/|$)(.*)
+          pathType: Prefix
+          backend:
+            service: 
+              name: service-flask-backend
+              port: 
+                number: 5000
