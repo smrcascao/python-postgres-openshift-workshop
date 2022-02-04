@@ -171,7 +171,7 @@ spec:
   rules:
   - http:
       paths:
-        - path: /app1(.*)
+        - path: /app(.*)
           pathType: Prefix
           backend:
             service: 
