@@ -106,7 +106,7 @@ spec:
     spec:
       containers:
         - name: flask-app
-          image: smrcascao/workshop:latest
+          image: smrcascao/runtime-demo-app:latest
           resources:
             requests:
               cpu: "100m"
