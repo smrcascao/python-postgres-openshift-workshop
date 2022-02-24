@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.postgres.StatefulSetName }}
+  namespace:   {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database
+  serviceName: database
+  template:
+    metadata:
+      labels:
+        app: database
+    spec:
+      containers:
+        - name: {{ .Values.postgres.containerName }}
+          image: "{{ .Values.postgres.imageName }}:{{ .Values.postgres.tag }}"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "2000m"
+              memory: "1024Mi"       
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.configMap.postgres }}
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.postgresName }}
+                  key: password
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.postgresName }}
+                  key: user
+            - name: POSTGRES_DB
+              value: {{ .Values.postgres.DBName }}
+          ports:
+            - containerPort: {{ .Values.postgres.containerPort }}
+              name: postgredb

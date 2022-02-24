@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.backend.deploymentName }}
+  namespace:   {{ .Values.namespace }}
+  labels:
+    {{- include "demo-app.labels" . | nindent 4 }}  
+spec:
+  replicas: {{ .Values.backend.replicas }}
+  selector:
+    matchLabels:
+      app: flask-app
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+        - name: {{ .Values.backend.containerName }}
+          image: "{{ .Values.backend.imageName }}:{{ .Values.backend.tag }}"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "2000m"
+              memory: "1024Mi"
+          env:
+            - name: HTML_Title
+              value: {{ .Values.backend.HTMLTitle }}
+            - name: SERVICE_POSTGRES_SERVICE_HOST
+              value: "{{ .Values.postgres.serviceName }}.{{ .Values.namespace }}.svc.cluster.local"
+            - name: POSTGRES_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.postgresName }}
+                  key: user
+            - name: POSTGRES_DB_PSW
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.postgresName }}
+                  key: password
+            - name: POSTGRES_DB_NAME
+              value: {{ .Values.postgres.DBName }}
+          ports:
+            - containerPort: {{ .Values.backend.containerPort }}
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.backend.containerPort }}
+            initialDelaySeconds: 80
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.backend.containerPort }}
+            initialDelaySeconds: 80
+            periodSeconds: 20
+            timeoutSeconds: 10
+            successThreshold: 1
+            failureThreshold: 5

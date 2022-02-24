@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>OpenShift Workshop</title>
+    <title> {{ title }}</title>
     <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
@@ -19,7 +19,7 @@
     <div class="container-full">
         <div class="row">
             <div class="col-lg-12 text-center v-center">
-                <p class="lead">OpenShift Workshop</p>
+                <p class="lead"> {{ title }} </p>
                 <br>
                 <br>
                 <br>
@@ -29,7 +29,7 @@
                         <h2>Thank you!</h2>
                         <br>
                         <br>
-                        <h2><button type="button" onClick="window.location='/';" class="btn btn-dark">Main Page</button></h2>
+                        <h2><button type="button" onClick="window.location='{{baseURL}}/';" class="btn btn-dark">Main Page</button></h2>
                     </div>
                 </form>
             </div>

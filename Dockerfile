@@ -7,7 +7,7 @@ RUN apk update \
   && apk add postgresql-dev
 
 COPY requirements.txt /requirements.txt
-
+RUN pip3 install --upgrade pip
 RUN pip3 --no-cache-dir install -r /requirements.txt
 
 ENV APP_ROOT '/application'

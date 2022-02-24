@@ -11,7 +11,15 @@ Docker build
 Docker run App
 ============
 
-```docker run -it -p 5000:5000 -e POSTGRES_DB_USER=postgres -e POSTGRES_DB_PSW=mysecretpassword -e SERVICE_POSTGRES_SERVICE_HOST=localhost  -e POSTGRES_DB_NAME=workshopdb -d docker.io/library/smrcascao/workshop```
+```docker run -it -p 5000:5000 -e POSTGRES_DB_USER=postgres -e POSTGRES_DB_PSW=mysecretpassword -e SERVICE_POSTGRES_SERVICE_HOST=localhost  -e POSTGRES_DB_NAME=workshopdb -e HTML_Title=Demo-APP -d docker.io/library/smrcascao/workshop```
+
+***More environment variables:***
+
+| Environment Variable Name  | Type  | Description |
+|---|---|---|
+|STATIC_DIR_BASE_URL   |  STR | Static files (CSS, js)  |
+|TEMPLATES_DIR_BASE_URL   |   STR|templates folder (Index.html, success.html) |
+|BASE_URL   | STR | Base URL example:  "www.domain.com/service"  |
 
 
 Docker run postgres data base
