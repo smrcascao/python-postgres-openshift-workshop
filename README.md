@@ -11,7 +11,7 @@ Docker build
 Docker run App
 ============
 
-```docker run -it -p 5000:5000 -e POSTGRES_DB_USER=postgres -e POSTGRES_DB_PSW=mysecretpassword -e SERVICE_POSTGRES_SERVICE_HOST=localhost  -e POSTGRES_DB_NAME=workshopdb -e HTML_Title=Demo-APP -e backgroudColorPage=green -d docker.io/library/smrcascao/workshop```
+```docker run -it -p 5000:5000 -e POSTGRES_DB_USER=postgres -e POSTGRES_DB_PSW=mysecretpassword -e SERVICE_POSTGRES_SERVICE_HOST=localhost  -e POSTGRES_DB_NAME=workshopdb -e HTML_Title=Demo-APP -e backgroudColorPage=green -d smrcascao/runtime-demo-app:latest```
 
 ***More environment variables:***
 
