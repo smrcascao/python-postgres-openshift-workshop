@@ -30,3 +30,4 @@ backend:
   containerPort: 5000
   serviceName: service-flask-backend
   HTMLTitle: Runtime 20 Demo-APP
+  backgroudColorPage: blue

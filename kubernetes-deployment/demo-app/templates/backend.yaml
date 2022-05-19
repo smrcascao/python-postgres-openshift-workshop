@@ -26,6 +26,8 @@ spec:
               cpu: "2000m"
               memory: "1024Mi"
           env:
+            - name: backgroudColorPage
+              value: {{ .Values.backend.backgroudColorPage }}
             - name: HTML_Title
               value: {{ .Values.backend.HTMLTitle }}
             - name: SERVICE_POSTGRES_SERVICE_HOST
