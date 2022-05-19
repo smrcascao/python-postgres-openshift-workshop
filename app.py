@@ -75,11 +75,15 @@ def index():
     if 'HTML_Title' in os.environ:
         htmlTitlePage = os.environ.get('HTML_Title')
 
+    backgroudColorPage = "black"
+    if 'backgroudColorPage' in os.environ:
+        backgroudColorPage = os.environ.get('backgroudColorPage')
+
     baseURL = ""
     if 'BASE_URL' in os.environ:
         baseURL = os.environ.get('BASE_URL')
 
-    return render_template('index.html', title=htmlTitlePage, baseURL=baseURL)
+    return render_template('index.html', title=htmlTitlePage, baseURL=baseURL, backgroudColorPage=backgroudColorPage)
 
 
 @app.route('/success')
