@@ -158,30 +158,30 @@ spec:
   selector:
     app: flask-app
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  namespace: demo-app
-  name: ingress-nginx
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-spec:
-  rules:
-  - http:
-      paths:
-        - path: /app(.*)
-          pathType: Prefix
-          backend:
-            service: 
-              name: service-flask-backend
-              port: 
-                number: 5000
-        - path: /(.*)
-          pathType: Prefix
-          backend:
-            service: 
-              name: service-flask-backend
-              port: 
-                number: 5000
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   namespace: demo-app
+#   name: ingress-nginx
+#   annotations:
+#     kubernetes.io/ingress.class: nginx
+#     nginx.ingress.kubernetes.io/use-regex: "true"
+#     nginx.ingress.kubernetes.io/rewrite-target: /$1
+# spec:
+#   rules:
+#   - http:
+#       paths:
+#         - path: /app(.*)
+#           pathType: Prefix
+#           backend:
+#             service: 
+#               name: service-flask-backend
+#               port: 
+#                 number: 5000
+#         - path: /(.*)
+#           pathType: Prefix
+#           backend:
+#             service: 
+#               name: service-flask-backend
+#               port: 
+#                 number: 5000
