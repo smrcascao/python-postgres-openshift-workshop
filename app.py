@@ -104,8 +104,8 @@ def healthz():
     return "OK"
 
 @app.route('/headers')
-def index():
-    logging.info("request.headers"+str(request.headers))
+def headers():
+    logging.info("\nHeaders Start:\n"+str(request.headers)+"\nEnd Headers")
     return str(request.headers)
 
 

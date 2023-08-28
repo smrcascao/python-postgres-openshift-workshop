@@ -2,6 +2,8 @@ FROM python:3.6.6-alpine3.8
 
 LABEL maintainer="smrcascao@gmail.com"
 
+RUN addgroup -S runner && adduser -S runner -G runner
+USER runner
 RUN apk update \
   && apk add --virtual build-deps gcc python3-dev musl-dev \
   && apk add postgresql-dev
