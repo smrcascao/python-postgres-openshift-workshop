@@ -103,6 +103,10 @@ def success():
 def healthz():
     return "OK"
 
+@app.route('/headers')
+def index():
+    logging.info("request.headers"+str(request.headers))
+    return str(request.headers)
 
 
 @app.route('/healthx')
