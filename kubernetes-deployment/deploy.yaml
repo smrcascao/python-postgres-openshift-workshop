@@ -134,6 +134,9 @@ spec:
             failureThreshold: 5
         - name: autoinstrument
           image: grafana/beyla:latest
+          ports:
+            - containerPort: 9100
+            - containerPort: 8443
           resources:
             requests:
               cpu: "100m"
