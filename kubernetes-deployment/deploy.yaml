@@ -152,8 +152,8 @@ spec:
           env:
             - name: OPEN_PORT # The internal port of the goblog application container
               value: "8443"
-            - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: "http://grafana-agent:4318"
+            # - name: OTEL_EXPORTER_OTLP_ENDPOINT
+            #   value: "http://grafana-agent:4318"
             - name: BEYLA_PROMETHEUS_PORT
               value: "9100"
             - name: PROMETHEUS_PATH
