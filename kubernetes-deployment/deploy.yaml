@@ -168,10 +168,13 @@ spec:
   ports:
     - port: 5000
       targetPort: 5000
+      name: flask
     - port: 9100
-      targetPort: 9100   
+      targetPort: 9100
+      name: prometheus   
     - port: 8443
       targetPort: 8443
+      name: otel
   selector:
     app: flask-app
 ---
