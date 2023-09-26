@@ -62,19 +62,6 @@ spec:
           ports:
             - containerPort: 5432
               name: postgredb
-  #         volumeMounts:
-  #           - name: postgredb
-  #             mountPath: /var/lib/postgresql
-  #             subPath: postgres
-  # volumeClaimTemplates:
-  #   - metadata:
-  #       name: postgredb
-  #     spec:
-  #       accessModes: ["ReadWriteOnce"]
-  #       storageClassName: default
-  #       resources:
-  #         requests:
-  #           storage: 1Gi
 ---
 apiVersion: v1
 kind: Service
@@ -145,6 +132,29 @@ spec:
             timeoutSeconds: 5
             successThreshold: 1
             failureThreshold: 5
+        - name: autoinstrument
+          image: grafana/beyla:latest
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "2000m"
+              memory: "1024Mi"
+          securityContext: # Privileges are required to install the eBPF probes
+            runAsUser: 0
+            capabilities:
+              add:
+                - SYS_ADMIN
+          env:
+            - name: OPEN_PORT # The internal port of the goblog application container
+              value: "8443"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://grafana-agent:4318"
+            - name: BEYLA_PROMETHEUS_PORT
+              value: "9100"
+            - name: PROMETHEUS_PATH
+              value: "/metrics"
 ---
 apiVersion: v1
 kind: Service
