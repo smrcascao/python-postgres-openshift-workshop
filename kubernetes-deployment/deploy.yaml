@@ -132,36 +132,36 @@ spec:
             timeoutSeconds: 5
             successThreshold: 1
             failureThreshold: 5
-        - name: beyla
-          image: grafana/beyla:latest
-          ports:
-            - containerPort: 9100
-            - containerPort: 8443
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-            limits:
-              cpu: "2000m"
-              memory: "1024Mi"
-          securityContext: # Privileges are required to install the eBPF probes
-            runAsUser: 0
-            capabilities:
-              add:
-                - SYS_ADMIN
-          env:
-            - name: OPEN_PORT # The internal port of the goblog application container
-              value: "5000"
-            # - name: OTEL_EXPORTER_OTLP_ENDPOINT
-            #   value: "http://grafana-agent:4318"
-            - name: BEYLA_PROMETHEUS_PORT
-              value: "9100"
-            - name: PROMETHEUS_PATH
-              value: "/metrics"
-            - name: SERVICE_NAME
-              value: "flask-backend-deployment"
-            - name: PRINT_TRACES
-              value: "true"
+        # - name: beyla
+        #   image: grafana/beyla:latest
+        #   ports:
+        #     - containerPort: 9100
+        #     - containerPort: 8443
+        #   resources:
+        #     requests:
+        #       cpu: "100m"
+        #       memory: "128Mi"
+        #     limits:
+        #       cpu: "2000m"
+        #       memory: "1024Mi"
+        #   securityContext: # Privileges are required to install the eBPF probes
+        #     runAsUser: 0
+        #     capabilities:
+        #       add:
+        #         - SYS_ADMIN
+        #   env:
+        #     - name: OPEN_PORT # The internal port of the goblog application container
+        #       value: "5000"
+        #     # - name: OTEL_EXPORTER_OTLP_ENDPOINT
+        #     #   value: "http://grafana-agent:4318"
+        #     - name: BEYLA_PROMETHEUS_PORT
+        #       value: "9100"
+        #     - name: PROMETHEUS_PATH
+        #       value: "/metrics"
+        #     - name: SERVICE_NAME
+        #       value: "flask-backend-deployment"
+        #     - name: PRINT_TRACES
+        #       value: "true"
 ---
 apiVersion: v1
 kind: Service
